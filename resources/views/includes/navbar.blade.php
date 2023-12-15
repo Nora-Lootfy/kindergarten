@@ -28,3 +28,15 @@
     </div>
 </nav>
 <!-- Navbar End -->
+<script>
+    anchors = Array.from(document.getElementsByClassName("nav-item nav-link"))
+
+    anchors.forEach(function (anchor) {
+        if (anchor.href === window.location.href) {
+            anchor.className = "nav-item nav-link active"
+        } else {
+            anchor.className = "nav-item nav-link"
+        }
+    })
+
+</script>
