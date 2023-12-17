@@ -1,17 +1,14 @@
 @extends('layouts.template')
 
 @section('title')
-    About page
+    404 page
 @endsection
 
 @push('header')
-    About US
+    404 Error
 @endpush
 
 @section('content')
     @include('includes.pageHeader')
-    @include('includes.about')
-    @include('includes.callToAction')
-    @include('includes.team')
+    @include('includes.404')
 @endsection
-

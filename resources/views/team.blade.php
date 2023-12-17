@@ -1,17 +1,14 @@
 @extends('layouts.template')
 
 @section('title')
-    About page
+    Teachers Page
 @endsection
 
 @push('header')
-    About US
+    Teachers
 @endpush
 
 @section('content')
     @include('includes.pageHeader')
-    @include('includes.about')
-    @include('includes.callToAction')
     @include('includes.team')
 @endsection
-

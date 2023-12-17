@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
+@section('title')
+    Home page
+@endsection
+
 @section('content')
     @include('includes.carousel')
     @include('includes.facilities')

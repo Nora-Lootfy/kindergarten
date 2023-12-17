@@ -18,13 +18,41 @@ Route::get('/', function () {
 });
 
 Route::fallback(function () {
-   return redirect('/');
+   return view('notFound');
 });
 
-Route::get('home', function () {
-    return view('home');
-})->name('home');
+Route::get('index', function () {
+    return view('index');
+})->name('index');
 
 Route::get('about', function () {
     return view('about');
 })->name('about');
+
+Route::get('classes', function () {
+    return view('classes');
+})->name('classes');
+
+Route::get('contact', function () {
+    return view('contactUs');
+})->name('contact');
+
+Route::get('testimonial', function () {
+    return view('testimonial');
+})->name('testimonial');
+
+Route::get('facility', function () {
+    return view('facility');
+})->name('facility');
+
+Route::get('team', function () {
+    return view('team');
+})->name('team');
+
+Route::get('call-to-action', function () {
+    return view('callToAction');
+})->name('callToAction');
+
+Route::get('appointment', function () {
+    return view('appointment');
+})->name('appointment');

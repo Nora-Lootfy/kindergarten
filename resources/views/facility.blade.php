@@ -1,17 +1,15 @@
 @extends('layouts.template')
 
 @section('title')
-    About page
+    Facilities Page
 @endsection
 
 @push('header')
-    About US
+    Facilities
 @endpush
 
 @section('content')
     @include('includes.pageHeader')
-    @include('includes.about')
-    @include('includes.callToAction')
-    @include('includes.team')
+    @include('includes.facilities')
 @endsection
 

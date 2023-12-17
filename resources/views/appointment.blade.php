@@ -1,17 +1,16 @@
 @extends('layouts.template')
 
 @section('title')
-    About page
+    Appointment Page
 @endsection
 
 @push('header')
-    About US
+    Appointment
 @endpush
 
 @section('content')
     @include('includes.pageHeader')
-    @include('includes.about')
-    @include('includes.callToAction')
-    @include('includes.team')
+    @include('includes.appointment')
 @endsection
+
 
