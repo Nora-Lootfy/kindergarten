@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,30 @@ Route::get('call-to-action', function () {
 Route::get('appointment', function () {
     return view('appointment');
 })->name('appointment');
+
+Route::get('test', function () {
+    $records = [
+        ['published'=>1, 'test'=>'test'],
+        ['published'=>0, 'test'=>'test2']
+    ];
+    return view('admin.test', compact('records'));
+});
+
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('t', function () {
+//    return view('admin.addTestimonial');
+//});
+
+Route::get('testimonial-index', [TestimonialController::class, 'index'])->name('Testimonials');
+Route::get('create-testimonial', [TestimonialController::class, 'create'])->name('createTestimonial');
+Route::post('store-testimonial', [TestimonialController::class, 'store'])->name('storeTestimonial');
+Route::get('show-testimonial/{id}', [TestimonialController::class, 'show'])->name('showTestimonial');
+Route::get('edit-testimonial/{id}', [TestimonialController::class, 'edit'])->name('editTestimonial');
+Route::put('update-testimonial/{id}', [TestimonialController::class, 'update'])->name('updateTestimonial');
+Route::get('destroy-testimonial/{id}', [TestimonialController::class, 'destroy'])->name('destroyTestimonial');
