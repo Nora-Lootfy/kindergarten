@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teacher;
+use App\Traits\Common;
 
 class TeacherController extends Controller
 {
+    use Common;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $teachers = Teacher::get();
+
+        return view('admin.teachers', compact('teachers'));
     }
 
     /**
@@ -19,7 +24,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-
+        return view('admin.addTeacher');
     }
 
     /**
@@ -27,7 +32,19 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'          => 'required|string|max:255',
+            'job_title'     => 'required|string|max:255',
+            'image'         => 'required|mimes:png,jpg,jpeg|max:2048'
+        ]);
+
+        $data['is_popular'] = isset($request->is_popular);
+        $data['image'] = $this->uploadFile($request->image, 'assets\images');
+
+
+        Teacher::create($data);
+
+        return redirect()->route('teachers');
     }
 
     /**
@@ -35,7 +52,8 @@ class TeacherController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $teacher = Teacher::findOrFail($id);
+        return view('admin.showTeacher', compact('teacher'));
     }
 
     /**

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('job_title');
             $table->string('image');
             $table->boolean('is_popular');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@
         <br>
         <div>
             <a class="btn btn-primary" href="{{route('createTestimonial')}}">Add new Testimonial!!</a>
-            <a class="btn btn-secondary" href="{{route('Testimonials')}}">Back to All Testimonials</a>
+            <a class="btn btn-secondary" href="{{route('testimonials')}}">Back to All Testimonials</a>
         </div>
     </div>
 

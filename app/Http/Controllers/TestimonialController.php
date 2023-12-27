@@ -46,7 +46,7 @@ class TestimonialController extends Controller
 
         Testimonial::create($data);
 
-        return 'data inserted successfully';
+        return redirect()->route('testimonials');
 
 
     }
@@ -91,7 +91,7 @@ class TestimonialController extends Controller
 
         Testimonial::where('id', $id)->update($data);
 
-        return redirect()->route('Testimonials');
+        return redirect()->route('testimonials');
     }
 
     /**
@@ -100,6 +100,6 @@ class TestimonialController extends Controller
     public function destroy(string $id)
     {
         Testimonial::where('id', $id)->delete();
-        return redirect()->route('Testimonials');
+        return redirect()->route('testimonials');
     }
 }

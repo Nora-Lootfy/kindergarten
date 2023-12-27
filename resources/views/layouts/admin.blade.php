@@ -5,6 +5,7 @@
 
 <body>
 <div class="container-xxl bg-white p-0">
+    @include('includes.adminNavbar')
     @yield('content')
     @include('includes.footer')
     <!-- Back to Top -->
