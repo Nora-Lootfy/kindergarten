@@ -26,7 +26,7 @@
                     <td>{{$testimonial->published? 'Yes': 'No'}}</td>
                     <td><a href="{{route('showTestimonial', $testimonial->id)}}">Show</a></td>
                     <td><a href="{{route('editTestimonial', $testimonial->id)}}">Edit</a></td>
-                    <td><a href="{{route('destroyTestimonial', $testimonial->id)}}">Delete</a></td>
+                    <td><a href="{{route('destroyTestimonial', $testimonial->id)}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>

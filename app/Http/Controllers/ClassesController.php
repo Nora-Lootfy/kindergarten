@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\Classes;
 use App\Traits\Common;
 
-class TeacherController extends Controller
+
+class ClassesController extends Controller
 {
     use Common;
     /**
@@ -14,9 +16,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::get();
-
-        return view('admin.teachers', compact('teachers'));
+        $classes= Classes::get();
+        return view('admin.classes', compact('classes'));
     }
 
     /**
@@ -24,7 +25,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('admin.addTeacher');
+        $teachers = Teacher::select(['name', 'id'])->get();
+        return view('admin.addClass', compact('teachers'));
     }
 
     /**
@@ -34,17 +36,21 @@ class TeacherController extends Controller
     {
         $data = $request->validate([
             'name'          => 'required|string|max:255',
-            'job_title'     => 'required|string|max:255',
+            'price'         => 'required',
+            'age_from'      => 'required',
+            'age_to'        => 'required',
+            'starts_at'     => 'required',
+            'ends_at'       => 'required',
+            'teacher_id'    => 'required',
+            'capacity'    => 'required',
             'image'         => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);
 
-        $data['is_popular'] = isset($request->is_popular);
         $data['image'] = $this->uploadFile($request->image, 'assets\images');
 
+        Classes::create($data);
 
-        Teacher::create($data);
-
-        return redirect()->route('teachers');
+        return redirect()->route('class');
     }
 
     /**
@@ -52,8 +58,8 @@ class TeacherController extends Controller
      */
     public function show(string $id)
     {
-        $teacher = Teacher::findOrFail($id);
-        return view('admin.showTeacher', compact('teacher'));
+        $class = Classes::findOrFail($id);
+        return view('admin.showClass', compact('class'));
     }
 
     /**
@@ -61,9 +67,9 @@ class TeacherController extends Controller
      */
     public function edit(string $id)
     {
-        $teacher = Teacher::findOrFail($id);
-
-        return view('admin.editTeacher', compact('teacher'));
+        $class = Classes::findOrFail($id);
+        $teachers = Teacher::select(['id', 'name'])->get();
+        return view('admin.editClass', compact(['class', 'teachers']));
     }
 
     /**
@@ -73,19 +79,23 @@ class TeacherController extends Controller
     {
         $data = $request->validate([
             'name'          => 'required|string|max:255',
-            'job_title'     => 'required|string|max:255',
+            'price'         => 'required',
+            'age_from'      => 'required',
+            'age_to'        => 'required',
+            'starts_at'     => 'required',
+            'ends_at'       => 'required',
+            'teacher_id'    => 'required',
+            'capacity'      => 'required',
             'image'         => 'sometimes|mimes:png,jpg,jpeg|max:2048'
         ]);
-
-        $data['is_popular'] = isset($request->is_popular);
 
         if(isset($request->image)){
             $data['image'] = $this->uploadFile($request->image, 'assets\images');
         }
 
-        Teacher::where('id', $id)->update($data);
+        Classes::where('id', $id)->update($data);
 
-        return redirect()->route('teachers');
+        return redirect()->route('class');
     }
 
     /**
@@ -93,8 +103,7 @@ class TeacherController extends Controller
      */
     public function destroy(string $id)
     {
-        Teacher::where('id', $id)->delete();
-        return redirect()->route('teachers');
+        Classes::where('id', $id)->delete();
+        return redirect()->route('class');
     }
-
 }

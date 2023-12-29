@@ -10,7 +10,7 @@
             @foreach($teachers as $teacher)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative">
-                        <img class="img-fluid rounded-circle w-75" src="{{ asset('assets/img/'. $teacher->image) }}" alt="">
+                        <img class="img-fluid rounded-circle w-75" src="{{ asset('assets/images/'. $teacher->image) }}" alt="">
                         <div class="team-text">
                             <h3>{{$teacher->name}}</h3>
                             <p>{{$teacher->job_title}}</p>

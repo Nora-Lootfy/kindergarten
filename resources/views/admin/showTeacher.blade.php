@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <img src="{{asset('assets/images/'.$teacher->image)}}" alt="" width="75%">
+                <img src="{{asset('assets/images/'.$teacher->image)}}" alt="" width="40%">
             </div>
             <div class="col-md-6">
                 <div class="row">

@@ -6,13 +6,15 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Testimonial;
+use App\Models\Classes;
 
 class MainController extends Controller
 {
     public function index(): View{
         $testimonials = Testimonial::where('published', 1)->get();
         $teachers = Teacher::where('is_popular', 1)->take(3)->get();
-        return view('index', compact(['testimonials', 'teachers']));
+        $classes = Classes::take(6)->get();
+        return view('index', compact(['testimonials', 'teachers', 'classes']));
 //        return dd($testimonials);
     }
 
@@ -22,7 +24,8 @@ class MainController extends Controller
     }
 
     public function classes(): View{
-        return view('classes');
+        $classes = Classes::get();
+        return view('classes', compact('classes'));
     }
 
     public function contactUs (): View{
@@ -39,7 +42,7 @@ class MainController extends Controller
     }
 
     public function team(): View{
-        $teachers = Teacher::where('is_popular', 1)->take(3)->get();
+        $teachers = Teacher::where('is_popular', 1)->get();
         return view('team', compact('teachers'));
     }
 

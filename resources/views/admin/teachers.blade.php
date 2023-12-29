@@ -23,8 +23,8 @@
                     <td>{{$teacher->job_title}}</td>
                     <td>{{$teacher->is_popular? 'Yes': 'No'}}</td>
                     <td><a href="{{route('showTeacher', $teacher->id)}}">Show</a></td>
-                    <td><a href="#">Edit</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="{{route('editTeacher', $teacher->id)}}">Edit</a></td>
+                    <td><a href="{{route('destroyTeacher', $teacher->id)}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
                 </tr>
             @endforeach
             </tbody>
