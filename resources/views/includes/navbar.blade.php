@@ -24,7 +24,17 @@
             </div>
             <a href="{{route('contact')}}" class="nav-item nav-link">Contact Us</a>
         </div>
-        <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i class="fa fa-arrow-right ms-3"></i></a>
+        @if (Route::has('login'))
+            @auth
+                <a href="{{route('class')}}" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">
+                    Admin
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">
+                    Login<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            @endauth
+        @endif
     </div>
 </nav>
 <!-- Navbar End -->

@@ -33,8 +33,8 @@ Route::get('team', [MainController::class, 'team'])->name('team');
 Route::get('call-to-action', [MainController::class, 'callToAction'])->name('callToAction');
 Route::get('appointment', [MainController::class, 'appointment'])->name('appointment');
 
+
 Auth::routes(['verify' => true]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['verified']], function () {
     Route::group(
