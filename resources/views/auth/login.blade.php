@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <br>
-            <h2 class="display-2 mb-4">Login</h2>
+            <h2 class="display-2 mb-4">{{ __('Login') }}</h2>
             <form action="{{ route('login') }}" method="post" >
                 @csrf
                 <div class="form-group">
