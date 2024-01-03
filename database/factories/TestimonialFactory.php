@@ -17,10 +17,10 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'      => fake()->name(),
+            'name'      =>  fake()->name(),
             'job'       =>  fake()->jobTitle(),
             'image'	    =>	fake()->randomElement(['testimonial-1.jpg', 'testimonial-2.jpg', 'testimonial-3.jpg']),
-            'comment'   => fake()->text(),
+            'comment'   =>  fake()->text(),
             'published' =>	fake()->numberBetween(0, 1),
 
         ];

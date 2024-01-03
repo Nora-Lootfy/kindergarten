@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 /*
@@ -35,6 +36,7 @@ Route::get('appointment', [MainController::class, 'appointment'])->name('appoint
 
 
 Auth::routes(['verify' => true]);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['verified']], function () {
     Route::group(

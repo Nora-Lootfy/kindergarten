@@ -14,6 +14,7 @@ class MainController extends Controller
         $testimonials = Testimonial::where('published', 1)->get();
         $teachers = Teacher::where('is_popular', 1)->take(3)->get();
         $classes = Classes::take(6)->get();
+
         return view('index', compact(['testimonials', 'teachers', 'classes']));
 //        return dd($testimonials);
     }
