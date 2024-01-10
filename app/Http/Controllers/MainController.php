@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Testimonial;
 use App\Models\Classes;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
     public function index(): View{
+
+        $teachers = DB::table('teachers')
+            ->select(DB::raw('teachers.name, teachers.id, teachers.job_title, teachers.image, count(*) as number_of_classes'))
+            ->join('classes', 'teachers.id', '=', 'classes.teacher_id')
+            ->groupBy('teachers.name', 'teachers.id', 'teachers.job_title', 'teachers.image')
+            ->orderBy('number_of_classes', 'desc')
+            ->limit(3)
+            ->get();
+
         $testimonials = Testimonial::where('published', 1)->get();
-        $teachers = Teacher::where('is_popular', 1)->take(3)->get();
+//        $teachers = Teacher::where('is_popular', 1)->take(3)->get();
         $classes = Classes::take(6)->get();
 
         return view('index', compact(['testimonials', 'teachers', 'classes']));
@@ -43,7 +53,13 @@ class MainController extends Controller
     }
 
     public function team(): View{
-        $teachers = Teacher::where('is_popular', 1)->get();
+        $teachers = DB::table('teachers')
+            ->select(DB::raw('teachers.name, teachers.id, teachers.job_title, teachers.image, count(*) as number_of_classes'))
+            ->join('classes', 'teachers.id', '=', 'classes.teacher_id')
+            ->groupBy('teachers.name', 'teachers.id', 'teachers.job_title', 'teachers.image')
+            ->orderBy('number_of_classes', 'desc')
+            ->limit(3)
+            ->get();
         return view('team', compact('teachers'));
     }
 

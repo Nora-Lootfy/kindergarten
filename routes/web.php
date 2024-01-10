@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -30,11 +31,13 @@ Route::get('facility', [MainController::class, 'facility'])->name('facility');
 Route::get('team', [MainController::class, 'team'])->name('team');
 Route::get('call-to-action', [MainController::class, 'callToAction'])->name('callToAction');
 Route::get('appointment', [MainController::class, 'appointment'])->name('appointment');
+Route::post('send-email', [ContactController::class, 'send'])->name('sendEmail');
 
 
 Auth::routes(['verify' => true]);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+//Route::get('test', [MainController::class, 'test']);
 //Route::group(['prefix' => 'admin', 'middleware' => ['verified']], function () {
 //    Route::group(
 //        ['prefix' => 'testimonials',], function () {

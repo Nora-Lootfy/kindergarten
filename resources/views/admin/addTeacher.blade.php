@@ -36,9 +36,6 @@
                 @enderror
             </div>
 
-            <div class="checkbox">
-                <label><input type="checkbox" name="is_popular"> Is Popular</label>
-            </div>
             <br>
             <button type="submit" class="btn btn-primary" style="width: 100px">Add</button>
         </form>

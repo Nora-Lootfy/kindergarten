@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Testimonial::factory(10)->create();
         Teacher::factory(10)->create();
-        Classes::factory(10)->create();
+        Classes::factory(30)->create();
     }
 }

@@ -20,7 +20,6 @@ class TeacherFactory extends Factory
             'name'      =>  fake()->name(),
             'job_title' => fake()->jobTitle(),
             'image'     => fake()->randomElement(['team-1.jpg', 'team-2.jpg', 'team-3.jpg']),
-            'is_popular'=> fake()->numberBetween(0, 1),
         ];
     }
 }

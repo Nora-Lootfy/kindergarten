@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\TeacherPerClassChart;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Traits\Common;
@@ -12,11 +13,12 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TeacherPerClassChart $chart)
     {
         $teachers = Teacher::get();
+        $chart = $chart->build();
 
-        return view('admin.teachers', compact('teachers'));
+        return view('admin.teachers', compact(['teachers', 'chart']));
     }
 
     /**

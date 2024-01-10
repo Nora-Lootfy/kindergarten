@@ -9,7 +9,6 @@
             <tr>
                 <th>Name</th>
                 <th>Job</th>
-                <th>IS Popular</th>
                 <th>Show</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -21,7 +20,6 @@
                 <tr>
                     <td>{{$teacher->name}}</td>
                     <td>{{$teacher->job_title}}</td>
-                    <td>{{$teacher->is_popular? 'Yes': 'No'}}</td>
                     <td><a href="{{route('showTeacher', $teacher->id)}}">Show</a></td>
                     <td><a href="{{route('editTeacher', $teacher->id)}}">Edit</a></td>
                     <td><a href="{{route('destroyTeacher', $teacher->id)}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
@@ -29,11 +27,28 @@
             @endforeach
             </tbody>
         </table>
+
+
         <br>
-        <div >
-            <a class="btn btn-primary" href="{{route('createTeacher')}}">Add new Teacher!!</a>
+
+        <div class="container ">
+
+            <div class="p-6 m-20 bg-white rounded shadow">
+                {!! $chart->container() !!}
+            </div>
 
         </div>
+
+        <script src="{{ $chart->cdn() }}"></script>
+
+        {{ $chart->script() }}
+
+    </div>
+
+    <br>
+
+    <div >
+        <a class="btn btn-primary" href="{{route('createTeacher')}}">Add new Teacher!!</a>
 
     </div>
 @endsection

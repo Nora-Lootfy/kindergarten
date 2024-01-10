@@ -16,13 +16,7 @@
                 <div class="row">
                     <p class="text-light bg-secondary" style="padding: 25px; border-radius:25px;">Job Title:<br>{{$teacher->job_title}}</p>
                 </div>
-                <div class="row">
-                    @if($teacher->is_popular)
-                        <p class="text-light bg-secondary" style="padding: 20px; border-radius:25px; text-align: center">Popular</p>
-                    @else
-                        <p class="text-light bg-secondary" style="padding: 20px; border-radius:25px; text-align: center">not Popular</p>
-                    @endif
-                </div>
+
 
             </div>
         </div>
