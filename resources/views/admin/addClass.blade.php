@@ -8,7 +8,6 @@
             <div class="container text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
                         <h1 class="display-1">No teachers</h1>
                         <p class="mb-4">Try adding teachers first then back to classes to add them.</p>
                         <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('createTeacher')}}">Add a new Teacher</a>

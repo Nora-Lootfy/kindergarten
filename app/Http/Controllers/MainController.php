@@ -30,7 +30,13 @@ class MainController extends Controller
     }
 
     public function about(): View{
-        $teachers = Teacher::where('is_popular', 1)->take(3)->get();
+        $teachers = DB::table('teachers')
+            ->select(DB::raw('teachers.name, teachers.id, teachers.job_title, teachers.image, count(*) as number_of_classes'))
+            ->join('classes', 'teachers.id', '=', 'classes.teacher_id')
+            ->groupBy('teachers.name', 'teachers.id', 'teachers.job_title', 'teachers.image')
+            ->orderBy('number_of_classes', 'desc')
+            ->limit(3)
+            ->get();
         return view('about', compact('teachers'));
     }
 

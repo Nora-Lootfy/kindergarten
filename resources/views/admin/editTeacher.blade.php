@@ -34,7 +34,7 @@
                 <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}">
                 <br>
                 <img src="{{asset('assets/images/'.$teacher->image)}}" alt="teacher" width="15%">
-                @error('image')
+                `@error('image')
                 {{ $message }}
                 @enderror
             </div>
